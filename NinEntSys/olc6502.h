@@ -23,6 +23,13 @@ public:
 		N = (1 << 7), // Negative
 	};
 
+	uint8_t a = 0x00; //Accumilate
+	uint8_t x = 0x00; // X
+	uint8_t y = 0x00; // Y
+	uint8_t stkp = 0x00; //Stack Point
+	uint8_t pc = 0x0000; // program counter
+	uint8_t stats = 0x00; //status
+
 private:
 	Bus* bus = nullptr;
 	uint8_t read(uint16_t a);
