@@ -10,6 +10,19 @@ public:
 
 	void ConnectBus(Bus* n) { bus = n; }
 
+public:
+	enum FLAGS6502
+	{
+		C = (1 << 0), // Carry
+		Z = (1 << 1), // Zero
+		I = (1 << 2), // Disable Interrupts
+		D = (1 << 3), // Decimal
+		B = (1 << 4), // Break
+		U = (1 << 5), // Unused
+		V = (1 << 6), // Overflow
+		N = (1 << 7), // Negative
+	};
+
 private:
 	Bus* bus = nullptr;
 	uint8_t read(uint16_t a);
