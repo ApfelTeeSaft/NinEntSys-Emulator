@@ -34,5 +34,8 @@ private:
 	Bus* bus = nullptr;
 	uint8_t read(uint16_t a);
 	void write(uint16_t a, uint8_t d);
+
+	uint8_t GetFlag(FLAGS6502 f);
+	void SetFlag(FLAGS6502 f, bool v); // J00l B00l YET AGAIN!!
 };
 
