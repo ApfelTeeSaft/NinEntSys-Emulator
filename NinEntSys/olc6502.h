@@ -57,6 +57,14 @@ public:
 
 	uint8_t XXX();
 
+	void clock();
+
+	void reset();
+
+	void irq();
+
+	void nmi();
+
 private:
 	Bus* bus = nullptr;
 	uint8_t read(uint16_t a);
