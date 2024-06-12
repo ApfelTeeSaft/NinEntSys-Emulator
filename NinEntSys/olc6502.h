@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <vector>
 
 class Bus;
 
@@ -65,6 +67,13 @@ public:
 
 	void nmi();
 
+	uint8_t fetch();
+	uint8_t fetched = 0x00;
+	uint16_t addr_abs = 0x0000;
+	uint16_t addr_rel = 0x00;
+	uint16_t opcode = 0x00;
+	uint16_t cycles = 0;
+
 private:
 	Bus* bus = nullptr;
 	uint8_t read(uint16_t a);
@@ -72,5 +81,15 @@ private:
 
 	uint8_t GetFlag(FLAGS6502 f);
 	void SetFlag(FLAGS6502 f, bool v); // J00l B00l YET AGAIN!!
+
+	struct INSTRUCTION
+	{
+		std::string name;
+		uint8_t(olc6502::*operate)(void) = nullptr;
+		uint8_t(olc6502::*addrmode)(void) = nullptr;
+		uint8_t cycles = 0;
+	};
+
+	std::vector<INSTRUCTION> lookup;
 };
 
